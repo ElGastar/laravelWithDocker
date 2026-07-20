@@ -1,4 +1,3 @@
-version: "3.8"
 
 services:
   nginx:
@@ -31,7 +30,7 @@ services:
       context: dockerfiles
       dockerfile: composer.Dockerfile
     volumes:
-      - db_data:/var/www/laravel
+      - ./src:/var/www/laravel
   artisan:
     build:
       context: dockerfiles

@@ -25,7 +25,7 @@ ARG GID=1000
 RUN addgroup -g ${GID} -S laravel && adduser -u ${UID} -S laravel -G laravel
 
 # Копируем настройки PHP (рекомендую создать php.ini в папке dockerfiles)
-COPY php.ini /usr/local/etc/php/conf.d/app.ini
+#COPY php.ini /usr/local/etc/php/conf.d/app.ini
 
 USER laravel
 

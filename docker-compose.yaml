@@ -29,12 +29,10 @@ services:
       - ./src:/var/www/laravel:cached
     environment:
       - DB_HOST=mysql
-      - DB_DATABASE=${DB_DATABASE:-laravel}
+      - DB_DATABASE=${DB_DATABASE:-laravel_db}
       - DB_USERNAME=${DB_USERNAME:-laravel}
-      - DB_PASSWORD=${DB_PASSWORD:-secret}
-    depends_on:
-      mysql:
-        condition: service_healthy # Ждем, пока MySQL не станет здоровым
+      - DB_PASSWORD=${DB_PASSWORD:-password}
+  
     networks:
       - laravel-network
 
@@ -68,9 +66,7 @@ services:
     volumes:
       - ./src:/var/www/laravel:cached
     entrypoint: ["php", "/var/www/laravel/artisan"]
-    depends_on:
-      mysql:
-        condition: service_healthy
+  
     networks:
       - laravel-network
 

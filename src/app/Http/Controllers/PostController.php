@@ -21,17 +21,41 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
+        $item = [
+        [
+            'name' => 'John Doe1',
+            'email' => '1',],
+        [
+            'name' => 'John Doe2',
+            'email' => '2',
+        ],
+        [
+            'name' => 'John Doe3',
+            'email' => '3',
+        ],
+        
+        ];
+
+
+        foreach ($item as $value) {
+            Post::create([
+                'name' => $value['name'],
+                'email' => $value['email'], 
+            ]);
+        }
+    
+    return redirect('/')->with('success', 'Пост создан!');
     }
+    
+    
 
     /**
      * Store a newly created resource in storage.
      */
     public function store(StorePostRequest $request)
     {
-        //
+      
     }
-
     /**
      * Display the specified resource.
      */
@@ -51,9 +75,13 @@ class PostController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdatePostRequest $request, Post $post)
+    public function update()
     {
-        //
+        $post=Post::find(4);
+        $post->update([
+            'name' => 'update',
+            'email' => 'update',
+        ]);
     }
 
     /**

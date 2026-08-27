@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');     
             $table->string('email');
+            $table->softDeletes(); // Добавляем поле deleted_at для мягкого удаления
             $table->timestamps();
         });
     }

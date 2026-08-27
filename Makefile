@@ -115,7 +115,8 @@ artisan: ## Запустить Artisan (make artisan cmd=migrate)
 	fi
 	@printf "$(GREEN)⚡ Запуск artisan $(cmd)...$(NC)\n"
 	$(RUN) artisan $(cmd)
-
+seed-post:
+	$(MAKE) seed SEEDER=PostSeeder
 # ============================================
 # Команды для миграций
 # ============================================

@@ -17,8 +17,10 @@ class PostFactory extends Factory
      */
     public function definition(): array
     {
-        return [
-            //
+      return [
+            'name' => fake()->name(),
+            'email' => fake()->unique()->safeEmail(),
+          
         ];
     }
 }

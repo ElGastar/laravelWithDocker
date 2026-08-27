@@ -89,8 +89,8 @@ class PostController extends Controller
      */
     public function destroy()
     {
-        $post=Post::find(1);
+        $post=Post::withTrashed()->find(1);
         
-        $post->delete();
+        $post->restore();
     }
 }

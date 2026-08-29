@@ -7,6 +7,7 @@
 DOCKER_COMPOSE = docker-compose
 EXEC = $(DOCKER_COMPOSE) exec
 RUN = $(DOCKER_COMPOSE) run --rm
+NAME ?= create_posts_table
 
 # Цвета для красивого вывода
 GREEN = \033[0;32m
@@ -124,7 +125,9 @@ seed-post:
 migrate: ## Запустить миграции
 	@printf "$(GREEN)📊 Запуск миграций...$(NC)\n"
 	$(RUN) artisan migrate
-
+migration:
+	@echo "${GREEN}Создание миграции: ${MIGRATION_NAME}${NC}"
+	$(RUN) artisan make:migration $(NAME)
 rollback: ## Откатить миграции
 	@printf "$(YELLOW)⏪ Откат миграций...$(NC)\n"
 	$(RUN) artisan migrate:rollback

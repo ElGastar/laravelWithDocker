@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use App\Services\Greeting;
+use App\Services\PriceFormatter;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -14,6 +15,9 @@ class AppServiceProvider extends ServiceProvider
     {
         $this->app->singleton('greeting', function ($app) {
             return new Greeting();
+        });
+        $this->app->singleton('price_formatter', function ($app) {
+            return new PriceFormatter();
         });
     }
 

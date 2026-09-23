@@ -10,3 +10,7 @@ Route::get('/post/index', [App\Http\Controllers\PostController::class, 'index'])
 Route::get('/post/create', [App\Http\Controllers\PostController::class, 'create']);
 Route::get('/post/update', [App\Http\Controllers\PostController::class, 'update']);
 Route::get('/post/delete', [App\Http\Controllers\PostController::class, 'destroy']);
+
+Route::get('/greeting/{name}', function ($name) {
+    return App\Facades\GreetingFacade::sayHello($name);
+});

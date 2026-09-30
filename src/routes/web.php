@@ -12,6 +12,8 @@ Route::get('/post/update', [App\Http\Controllers\PostController::class, 'update'
 Route::get('/post/delete', [App\Http\Controllers\PostController::class, 'destroy']);
 
 Route::get('/tag-test', [App\Http\Controllers\ProductController::class, 'testTags']);
+Route::get('/tag-del/{tag}', [App\Http\Controllers\CleanDuplicatesController::class, 'removeDuplicateTags']);
+
 
 Route::get('/greeting/{name}', function ($name) {
     return App\Facades\GreetingFacade::sayHello($name);

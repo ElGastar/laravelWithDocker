@@ -12,6 +12,7 @@ return Application::configure(basePath: dirname(__DIR__))
     )
     ->withMiddleware(function (Middleware $middleware): void {
         $middleware->alias(['age'=>App\Http\Middleware\CheckMinAge::class]);
+        $middleware->alias(['log'=>App\Http\Middleware\LogExucationTime::class]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         //

@@ -47,7 +47,7 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
-    public function roles():BelongsTo{
+    public function role():BelongsTo{
 
         return $this->belongsTo(Role::class);
     }

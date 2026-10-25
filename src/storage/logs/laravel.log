@@ -233,3 +233,23 @@
 #35 /var/www/laravel/artisan(16): Illuminate\\Foundation\\Application->handleCommand(Object(Symfony\\Component\\Console\\Input\\ArgvInput))
 #36 {main}
 "} 
+[2026-10-23 13:02:35] local.ERROR: The "--rm" option does not exist. {"exception":"[object] (Symfony\\Component\\Console\\Exception\\RuntimeException(code: 0): The \"--rm\" option does not exist. at /var/www/laravel/vendor/symfony/console/Input/ArgvInput.php:226)
+[stacktrace]
+#0 /var/www/laravel/vendor/symfony/console/Input/ArgvInput.php(155): Symfony\\Component\\Console\\Input\\ArgvInput->addLongOption('rm', NULL)
+#1 /var/www/laravel/vendor/symfony/console/Input/ArgvInput.php(88): Symfony\\Component\\Console\\Input\\ArgvInput->parseLongOption('--rm')
+#2 /var/www/laravel/vendor/symfony/console/Input/ArgvInput.php(77): Symfony\\Component\\Console\\Input\\ArgvInput->parseToken('--rm', true)
+#3 /var/www/laravel/vendor/symfony/console/Input/Input.php(53): Symfony\\Component\\Console\\Input\\ArgvInput->parse()
+#4 /var/www/laravel/vendor/symfony/console/Command/Command.php(295): Symfony\\Component\\Console\\Input\\Input->bind(Object(Symfony\\Component\\Console\\Input\\InputDefinition))
+#5 /var/www/laravel/vendor/laravel/framework/src/Illuminate/Console/Command.php(180): Symfony\\Component\\Console\\Command\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Illuminate\\Console\\OutputStyle))
+#6 /var/www/laravel/vendor/symfony/console/Application.php(1117): Illuminate\\Console\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#7 /var/www/laravel/vendor/symfony/console/Application.php(356): Symfony\\Component\\Console\\Application->doRunCommand(Object(Laravel\\Tinker\\Console\\TinkerCommand), Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#8 /var/www/laravel/vendor/symfony/console/Application.php(195): Symfony\\Component\\Console\\Application->doRun(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#9 /var/www/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(198): Symfony\\Component\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#10 /var/www/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1235): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#11 /var/www/laravel/artisan(16): Illuminate\\Foundation\\Application->handleCommand(Object(Symfony\\Component\\Console\\Input\\ArgvInput))
+#12 {main}
+"} 
+[2026-10-25 22:37:54] local.ERROR: Cannot use App\Models\User as User because the name is already in use {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Cannot use App\\Models\\User as User because the name is already in use at /var/www/laravel/app/Http/Controllers/Auth/RegisteredUserController.php:16)
+[stacktrace]
+#0 {main}
+"} 

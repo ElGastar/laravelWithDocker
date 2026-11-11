@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Product;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Gate;
 use App\Models\Category;
 use App\Http\Requests\ProductRequest;
 
@@ -12,10 +13,11 @@ class ProductController extends Controller
 {
     /**
      * Display a listing of the resource.
-     */ 
+     */
     public function index()
     {
-        $products = Product::with('category')->latest()->paginate(10);
+        Gate::authorize('viewAny', Product::class);
+        $products = Product::active()->with('category')->latest()->paginate(10);
         return  view('admin.products.index', compact('products'));
     }
 
@@ -24,6 +26,7 @@ class ProductController extends Controller
      */
     public function create()
     {
+        Gate::authorize('create', Product::class);
         $categories = Category::where('status', 'active')->orderBy('name')->get();
         return view('admin.products.create', compact('categories'));
     }
@@ -33,6 +36,7 @@ class ProductController extends Controller
      */
     public function store(ProductRequest $request)
     {
+        Gate::authorize('create', Product::class);
 
         $validated = $request->validated();
         if ($request->hasFile('image')) {
@@ -49,9 +53,10 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-          $product->load('category');
+        Gate::authorize('view', $product);
+        $product->load('category');
 
-    return view('admin.products.show', compact('product'));
+        return view('admin.products.show', compact('product'));
     }
 
     /**
@@ -59,7 +64,7 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-
+        Gate::authorize('update', $product);
         $categories = Category::where('status', 'active')->orderBy('name')->get();
         return view('admin.products.edit', compact('product', 'categories'));
     }
@@ -70,6 +75,7 @@ class ProductController extends Controller
 
     public function update(ProductRequest $request, Product $product)
     {
+        Gate::authorize('update', $product);
         $validated = $request->validated();
 
         // Запоминаем путь к старой фотографии
@@ -99,6 +105,7 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
+        Gate::authorize('delete', $product);
         $image = $product->image;
 
         $product->delete();
